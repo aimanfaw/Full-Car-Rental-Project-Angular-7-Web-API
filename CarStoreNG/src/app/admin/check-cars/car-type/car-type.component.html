@@ -1,0 +1,25 @@
+<form #form="ngForm" (submit)="onSubmit(form)">
+    <div class="card" style="width: 20rem;">
+        <div class="card-header">
+         Car Information
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><label>Car Id</label> <input name="CarId" #CarId="ngModel" [(ngModel)]="myCar.CarId" readonly></li>
+            <li class="list-group-item"><label>Available</label> <input name="Available" #Available="ngModel" [(ngModel)]="myCar.Available" autocomplete="off"></li>
+            <li class="list-group-item"><label>PricePerDay</label> <input name="PriceForDay" #PriceForDay="ngModel" [(ngModel)]="myCar.PriceForDay" autocomplete="off"></li>
+            <li class="list-group-item"><label>LatePay</label> <input name="LatePay" #LatePay="ngModel" [(ngModel)]="myCar.LatePay" autocomplete="off"></li>
+            <li class="list-group-item"><label>CarNum</label> <input name="CarNum" #CarNum="ngModel" [(ngModel)]="myCar.CarNum" autocomplete="off"></li>
+            <li class="list-group-item"><label>Location</label> <input name="Location" #Location="ngModel" [(ngModel)]="myCar.Location" autocomplete="off"></li>
+            <li class="list-group-item"><label>CarInfoId</label> <input name="CarInfoId" #CarInfoId="ngModel" [(ngModel)]="myCar.CarInfoId" readonly></li>
+            
+          </ul>
+          <div class="row">
+            <div class="col" id="btn1">
+                <button href="#"  class="btn btn-danger" [mat-dialog-close]>Close</button>
+            </div>
+            <div class="col" id="btn2">
+                <button type="submit"  class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+      </div>
+    </form>

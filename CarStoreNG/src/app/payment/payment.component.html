@@ -1,0 +1,68 @@
+
+<div class="container">
+    <form #form="ngForm" (submit)="onSubmit(form)">
+        
+    <div class="card center" style="width: 26rem; height: 455px;">
+        <div class="card-body">
+          <h3 class="card-title">Payment Details  </h3>
+          <div class="row ">
+            <div class="col-md-6">
+              <label>Start date</label>
+              <input  type="date" min="{{setStartDate | date : 'yyyy-MM-dd'}}" name="StartDate"  #StartDate="ngModel" [(ngModel)]="paymentService.payForm.StartDate" (change)="selectStartDate($event)" class="form-control" value="StartDate">
+            </div>
+            <div class="col-md-6">
+              <label>End date</label>
+              <input type="date" min="{{setEndDate | date : 'yyyy-MM-dd'}}"  name="EndDate" #EndDate="ngModel" [(ngModel)]="paymentService.payForm.EndDate" (change)="selectEndDate($event)" (change)="dateHandler()" (change)="updateTotal()" class="form-control"  value="EndDate">
+            </div>
+            <div class="col-md-6">
+                <label>Payment Method</label>
+                <select class="form-control">
+                  <option> Card </option>
+                  <option> PayPal </option>
+                  <option> On Take</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                  <label>Days</label>
+                <input type="text" value="{{CountDays}}" type="text" class="form-control" id="inlineFormInputGroup" readonly>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Price per day</label>
+                    <input  value="{{dayPrice}}" class="form-control" readonly>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Behind time</label>
+                    <input value="{{lateDayPrice}}" class="form-control" readonly>
+                  </div>
+
+              <div class="col-md-6">
+                  <label class="sr-only" for="inlineFormInputGroup">Total</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-shekel-sign"></i></div>
+                    </div>
+                    <input type="text" value="{{Total | currency:'ILS'}}" class="form-control" id="inlineFormInputGroup" placeholder="Total" readonly>
+                  </div>
+                </div>
+
+                <!--PASS DATA FOR CARS AND USER IDS-->
+            <div class="col-md-6">
+              <input hidden name="UserId" #UserId="ngModel" [(ngModel)]="paymentService.payForm.UserId" class="form-control" readonly>
+            </div>
+            <div class="col-md-6">
+              <input hidden  name="CarTypeId" #CarTypeId="ngModel" [(ngModel)]="paymentService.payForm.CarTypeId" class="form-control" readonly>
+            </div>
+          </div>
+                            <!--END-->
+                  <div class="row" id="btn">
+            <button type="button" routerLink="/rentcars" class="btn btn-danger" [mat-dialog-close]>Return</button>
+          <button type="submit" class="btn btn-primary" >Rent</button>
+          
+          
+        </div>
+
+        </div>
+      </div>
+    </form>
+</div>

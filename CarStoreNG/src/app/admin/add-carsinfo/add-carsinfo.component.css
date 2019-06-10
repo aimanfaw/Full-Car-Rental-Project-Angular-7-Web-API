@@ -1,0 +1,26 @@
+.control{
+    margin-top: 100px;
+}
+.card-header{
+    
+    text-align: center;
+    display: block
+}
+
+div.col-xs-1{
+    margin-left: 80px;
+    margin-top: 15px;
+    font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+
+
+form {
+    clear:both;
+    max-width:30%;
+    margin:0 auto;
+    display:block;
+font-family: 'Courier New', Courier, monospace;
+    text-align:center;  
+}
+

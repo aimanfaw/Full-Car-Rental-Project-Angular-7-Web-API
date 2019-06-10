@@ -1,0 +1,69 @@
+
+#reglog{
+    margin-top: 6px;
+    color: black;
+}
+#reglog:hover{
+    color:#92734a
+}
+.fa-home:hover{
+    color: #92734a;
+   
+}
+.fa-home{
+    font-size: 25px;
+    color: black;
+}
+
+
+.fa-shopping-cart:hover{
+    color: #92734a;
+}
+
+.fa-car-side:hover{
+    color: #92734a
+}
+.fa-car-side {
+    color: black;
+    font-size:25px;
+    
+}
+.navbar-light .navbar-nav .nav-link{
+    font-family: "Font Awesome 5 Free";
+    margin-top: 6px;
+    color: black;
+    margin-left: 5px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+    
+    color: #92734a;
+}
+.navbar-light .navbar-toggler {
+    color: black;
+}
+.fa-tools{
+    color:black;
+    cursor: pointer;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.fa-tools:hover{
+    color: #92734a;
+}
+
+.fa-tools{
+    margin-top: 14px;
+}
+
+.fixed-top{
+    background-color:#4a3a28;
+}
+
+li{
+    margin-top: 25px;
+}
+
+

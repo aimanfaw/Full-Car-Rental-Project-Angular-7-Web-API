@@ -1,0 +1,64 @@
+
+  <div class="control"></div>
+  <form #form="ngForm" ngNativeValidate (submit)="onSubmit(form,Image)" autocomplete="off">
+      <div class="card text-center" style="width:25rem; height:46rem">
+          <div class="card-header" style="width:25rem; height:5rem">
+              <h2 class="display-6 text-center">Add / Edit  Cars</h2>
+              </div>
+            <ul id="textcard" class="nav nav-tabs card-header-tabs">                             
+            </ul>
+            <div class="form-group row ">
+                <div id="cols" class="col-xs-1">
+            <label>Car Type</label>
+            <select  name="CarInfoId" #CarInfoId="ngModel" [(ngModel)]="carsService.formTypeCar.CarInfoId" class="form-control"  required> 
+              <option name="CarInfoId" #CarInfoId="ngModel" [(ngModel)]="carsService.formTypeCar.CarInfoId"  *ngFor="let car of carsService.listInfoCar" id="id" label="{{car.Type}}-[{{car.Model}}]-{{car.Gear}}">{{car.CarId}}</option>
+            </select>   
+          </div>
+        </div>
+        <div  class="form-group row ">
+            <div class="col-xs-1">
+                <label id="router">Didn't find the car?</label>
+               <button class="btn btn-danger" routerLink="/addinfocars"> ADD CAR</button>
+              </div>
+        </div>
+    <div class="form-group row ">
+        <div class="col-xs-1">
+            <label>Available</label>
+            <select class="form-control" name="Available" #Available="ngModel" [(ngModel)]="carsService.formTypeCar.Available" class="form-control">
+              <option value="True">True</option>
+              <option value="False">False</option>
+            </select>
+          </div>
+    </div>
+    <div class="form-group row">
+      
+      <div class="col-xs-1">
+          <label>PriceForDay</label>
+          <input name="PriceForDay" #PriceForDay="ngModel" [(ngModel)]="carsService.formTypeCar.PriceForDay" class="form-control">
+        </div>
+      
+    
+      <div class="col-xs-1">
+          <label>LatePay</label>
+          <input name="LatePay" #LatePay="ngModel" [(ngModel)]="carsService.formTypeCar.LatePay" class="form-control">
+        </div>
+        <div class="col-xs-1">
+            <label>Car number</label>
+            <input name="CarNum" #CarNum="ngModel" [(ngModel)]="carsService.formTypeCar.CarNum" class="form-control">
+          </div>
+        <div class="col-xs-1">
+          <label>Location</label>
+          <select name="Location" #Location="ngModel" [(ngModel)]="carsService.formTypeCar.Location" class="form-control">
+          <option value="1">Haifa</option>
+          <option value="2">Mughar</option>
+        </select>
+        </div>
+        
+      </div>
+  
+ 
+      <button  type="submit"  class="btn btn-dark" [disabled]="form.invalid" >ADD</button>
+  
+    </div>
+
+  </form>

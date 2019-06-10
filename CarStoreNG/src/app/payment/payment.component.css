@@ -1,0 +1,22 @@
+
+
+
+.card-title{
+    text-align: center;
+
+}
+
+input, label {
+    display:block;
+}
+
+.btn{
+    margin-top: 40px;
+    height: 60px;
+    width: 200px;
+    margin-right: 2px;
+}
+
+.mb-2{
+    margin-top: 30px;
+}

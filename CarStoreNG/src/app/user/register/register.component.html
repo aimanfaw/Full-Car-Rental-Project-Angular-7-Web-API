@@ -1,0 +1,55 @@
+
+            <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                    <div class="card text-center">
+                            <div class="card-header ">
+                              <ul id="textcard" class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                  <a class="nav-link" routerLink="/login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" routerLink="/register">Register</a>
+                                </li>                               
+                              </ul>
+                            </div>
+                            <div class="card-body">
+                                    <div class="form-group">
+                                            <label><i class="fas fa-user"></i> Full Name</label>
+                                            <input name="FullName" #FullName="ngModel" [(ngModel)]="service.registerData.FullName" class="form-control" required autocomplete="off">                        
+                                        </div>
+                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label data-error="Username already Taken"><i class="fas fa-user"></i> User Name</label>
+                                            <input name="UserName" #UserName="ngModel" [(ngModel)]="service.registerData.UserName" class="form-control" required autocomplete="off">
+                                          
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label><i class="fas fa-key"></i> Password</label>
+                                            <input type="password" name="Password" #Password="ngModel" [(ngModel)]="service.registerData.Password" class="form-control" required autocomplete="off">
+                                            
+                                        </div>
+                                    </div>
+                    
+                                 
+                                        <div class="form-group">
+                                            <label><i class="fas fa-at"></i> Email</label>
+                                            <input type="email" name="Email" #Email="ngModel" [(ngModel)]="service.registerData.Email" class="form-control" required autocomplete="off">
+                                           
+                                        </div>
+                                        
+                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label><i class="fas fa-id-card"></i> ID Number</label>
+                                            <input name="PersonId" #PersonId="ngModel" [(ngModel)]="service.registerData.PersonId" class="form-control" required autocomplete="off">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label><i class="fas fa-transgender"></i> Gender</label>
+                                            <input name="Gender" #Gender="ngModel" [(ngModel)]="service.registerData.Gender" class="form-control" autocomplete="off">
+                                        </div>
+                                 </div>
+                            <button type="submit"  class="btn btn-primary" >Register</button>
+                    </div>
+                </div>
+            </form>
+  

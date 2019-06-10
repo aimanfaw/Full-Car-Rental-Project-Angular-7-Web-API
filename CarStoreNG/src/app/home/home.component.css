@@ -1,0 +1,66 @@
+#TittleOne{
+    color: #241b13;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    
+}
+
+
+.secoundDiv{
+margin-top:15px;
+}
+.card{
+    margin-top: 10px;
+    text-align: center;
+    
+}
+#mapCard{
+    background-color: gray;
+}
+
+.card-text{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+.input-group-text{
+    background-color: black;
+    color: white;
+    }
+
+.container{
+    margin-top: 10px;
+}
+
+
+.btn-primary{
+    margin: auto;
+    display: block;
+    margin-top: 50px;
+}
+button{
+    width: 200px;
+}
+
+
+h5{
+    margin-top: 5px;
+    font-family: monospace;
+}
+
+img{
+    height: 170px
+}
+
+agm-map {
+    
+    width: 500px;
+    height: 400px;
+  }
+
+  .col{
+     margin-top: 50px;
+  }
+
+.display-3{
+    margin-top: 50px;
+}
+

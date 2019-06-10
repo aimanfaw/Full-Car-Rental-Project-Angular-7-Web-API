@@ -1,0 +1,38 @@
+.card{
+
+min-width: 200px;
+    margin-top: 150px;
+}
+
+form{
+clear:both;
+max-width:20%;
+min-width: 20%;
+margin:0 auto;
+display:block;
+font-family:"Comic Sans MS", cursive, sans-serif;
+text-align:center;  
+}
+
+
+input.ng-touched.ng-invalid{
+
+border-color: #dc3545;
+}
+
+label{
+ font-size: 15px;
+ color: black
+}
+
+
+ a:not([href]):not([tabindex]) {
+     color: #17a2b8;
+     cursor: pointer;
+
+ }
+
+ a:not([href]):not([tabindex]):hover {
+    color: #007bff;
+}
+

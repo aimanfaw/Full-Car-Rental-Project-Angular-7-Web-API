@@ -1,0 +1,82 @@
+.row{
+    margin: auto;
+}
+.itemtwo {
+    
+    left: 200px;
+    position: absolute;
+} 
+
+.mytittle{
+    margin-top: 150px;
+}
+
+img{
+    height: 11rem;
+}
+
+.card{
+    margin-left:120px;
+    margin-top: 15px;
+    width: 750px; height: 220px;
+ 
+
+    
+}
+.btn-success{
+   margin-top: 9px;
+    margin-left:410px;
+    height: 45px;
+    width: 129px;
+    
+}
+
+.fa-shopping-cart{
+    color: black;
+    margin-top: 10px;
+    
+}
+
+.btn-success, .fa-shopping-cart:hover{
+    color: brown;
+}
+
+
+
+.tittle{
+    text-align: center;
+}
+
+.display-5{
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.input-group-text{
+background-color: black;
+color: white;
+}
+
+.input-group {
+    margin-top: 30px;
+}
+
+.col-3{
+    min-width: 400px;
+    background-color: white;
+    height: 460px;
+    margin-top: 18px;
+    margin-left: 20px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h5{
+    margin-top: 20px;
+}
+#paginator{
+    margin-top: 10px;
+    margin-left: 400px;
+    color: chocolate;
+}
+

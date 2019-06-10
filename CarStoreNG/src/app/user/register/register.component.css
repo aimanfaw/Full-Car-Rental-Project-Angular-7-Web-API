@@ -1,0 +1,25 @@
+.card{
+   min-width: 500px;
+        margin-top: 150px;
+}
+
+form{
+    clear:both;
+    max-width:30%;
+    margin:0 auto;
+    display:block;
+    font-family:"Comic Sans MS", cursive, sans-serif;
+    text-align:center;  
+}
+ 
+
+input.ng-touched.ng-invalid{
+    
+    border-color: #dc3545;
+}
+
+ label{
+     font-size: 15px;
+     color: black
+ }
+

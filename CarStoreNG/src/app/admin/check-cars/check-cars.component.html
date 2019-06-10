@@ -1,0 +1,117 @@
+<!--################CAR INFO ###################-->
+<h1 class="tittle">Edit / Delete car info</h1>
+<div class="container">
+<div class="form-group" id="mySearch">
+    <input [(ngModel)]="searchCarInfo" class="form-control" id="inputdefault" type="text" autocomplete="off" placeholder="  Search by Type / Model / Year / Gear ..."> 
+  </div>
+<table  class="table" style="width:50rem">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">CarId</th>
+      <th scope="col">Type</th>
+      <th scope="col">Model</th>
+      <th scope="col">YearMade</th>
+      <th scope="col">Gear</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of service.listInfoCar|filter:searchCarInfo|paginate:{itemsPerPage:4, currentPage:p1,id:'first' }" >
+      <td>{{car.CarId}}</td>
+      <td>{{car.Type}}</td>
+      <td>{{car.Model}}</td>
+      <td>{{car.YearMade}}</td>
+      <td>{{car.Gear}}</td>
+      <th scope="row" (click)="EditCarInfo(car.CarId,car.Type,car.Model,car.YearMade,car.Gear)"> <button class="btn btn-dark"><i class="fas fa-edit"></i></button></th>
+      <td><button (click)="CarInfoDelete(car.CarId)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+    </tr>
+   
+  </tbody>
+</table>
+</div>
+<div class="row">
+    <pagination-controls (pageChange)="p1=$event" id="first"></pagination-controls>
+</div>
+
+
+
+<!-- ###################### CAR TYPE ###################################-->
+
+<h1>Edit/Delete car type</h1>
+<div class="container">
+    <div class="form-group" id="mySearch">
+        <input [(ngModel)]="searchCarType" class="form-control" id="inputdefault" type="text" autocomplete="off" placeholder="  Search by price / car number / id ..."> 
+      </div>
+<table class="table" style="width:50rem">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">CarId</th>
+      <th scope="col">Available</th>
+      <th scope="col">PriceForDay</th>
+      <th scope="col">LatePay</th>
+      <th scope="col">CarNum</th>
+      <th scope="col">Location</th>
+      <th scope="col">CarInfoId</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let cars of service.listTypeCar|filter:searchCarType|paginate:{itemsPerPage:4, currentPage:p2,id:'secound' }">
+      <td>{{cars.CarId}}</td>
+      <td>{{cars.Available}}</td>
+      <td>{{cars.PriceForDay}}</td>
+      <td>{{cars.LatePay}}</td>
+      <td>{{cars.CarNum}}</td>
+      <td>{{cars.Location}}</td>
+      <td>{{cars.CarInfoId}}</td>
+      <th scope="row" (click)="EditCarType(cars.CarId,cars.Available,cars.PriceForDay,cars.LatePay,cars.CarNum,cars.Location,cars.CarInfoId)"> <button class="btn btn-dark"><i class="fas fa-edit"></i></button></th>
+      <td><button (click)="CarTypeDelete(cars.CarId)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+    </tr>
+   
+  </tbody>
+</table>
+</div>
+<div class="row">
+    <pagination-controls (pageChange)="p2=$event" id="secound"></pagination-controls>
+</div>
+
+
+<!--################CAR INFO ###################-->
+<h1>Edit/Delete car image</h1>
+<div class="container">
+    <div class="form-group" id="mySearch">
+        <input [(ngModel)]="searchImage" class="form-control" id="inputdefault" type="text" autocomplete="off" placeholder="  Search by id / car type..."> 
+      </div>
+<table class="table" style="width:50rem">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">CarId</th>
+      <th scope="col">CarType</th>
+      <th scope="col">CarImage</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of imageService.listPictureCar|filter:searchImage |paginate:{itemsPerPage:4, currentPage:p3,id:'third' }">
+      <td>{{car.CarId}}</td>
+      <td>{{car.CarType}}</td>
+      <img src="{{car.CarImage}}" width="50px" height="50px" alt="">
+      <th scope="row"><button class="btn btn-dark" routerLink="/uploadimage"><i class="fas fa-edit"></i></button></th>
+      <td><button (click)="DeleteImage(car.CarId)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+      
+    </tr>
+   
+  </tbody>
+</table>
+</div>
+<div class="row">
+    <pagination-controls (pageChange)="p3=$event" id="third"></pagination-controls>
+</div>

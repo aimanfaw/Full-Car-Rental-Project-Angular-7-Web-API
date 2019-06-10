@@ -1,0 +1,22 @@
+<table class="table" style="width:50rem">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">User ID</th>
+      <th scope="col">Car Id</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
+      <th scope="col">Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rented of serviceRented.rentedCarsList">
+      <th scope="row" (click)="CheckUserId(rented.UserId)"> <button class="btn btn-dark">{{rented.UserId}}</button></th>
+      <td scope="row" (click)="CheckCarId(rented.CarTypeId)"> <button class="btn btn-dark">{{rented.CarTypeId}}</button></td>
+      <td>{{rented.StartDate | date:'shortDate'}}</td>
+      <td>{{rented.EndDate | date:'shortDate'}}</td>
+      <td><button (click)="DeleteRent(rented.Id)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+    </tr>
+   
+  </tbody>
+</table>

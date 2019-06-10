@@ -1,0 +1,166 @@
+
+<div class="mytittle">
+<div class="row" >
+   <div class="col-8">
+<form #ngForm (submit)="onSubmit(UserName,Password)">
+<div  *ngFor="let cars of newCarType |paginate:{itemsPerPage:3, currentPage:p } | filter:searchModel | filter:searchYear | filter:searchGear">
+
+<div *ngFor="let car of service.listTypeCar; let i = index">
+<tr *ngIf="cars.CarId==car.CarInfoId">
+<div class="card-body"  class="card" style="width: 51rem; height: 12rem;">
+<div  class="row">
+      <div  class="col-8">
+        
+<h2 style="color:4a3a28" class="card-title"><i class="fas fa-car-side">&nbsp;</i>-{{cars.Type}}-[{{cars.Model}}]</h2>
+<div class="row">
+<div>
+<strong style="color:4a3a28">Gear :</strong>   {{cars.Gear}}
+</div>
+<div class="itemtwo">
+<strong style="color:4a3a28">Year :</strong>   {{cars.YearMade}}
+</div>
+</div>
+
+<div class="row">
+<div *ngIf="car.Location == 1">
+   <strong style="color:4a3a28">Location :</strong> Haifa
+</div>
+<div *ngIf="car.Location == 2">
+  <strong style="color:4a3a28">Location :</strong> Mughar
+</div>
+
+
+<div class="itemtwo">
+<div>
+ <strong style="color:4a3a28">Car.N :</strong> {{car.CarNum}}
+</div>
+</div>
+</div>
+<div class="row">
+ <div >
+<strong style="color:4a3a28">Available :</strong>  {{car.Available}}
+ </div>
+
+<div class="itemtwo">
+ <div>
+
+ </div>
+</div>
+</div>
+
+
+
+
+<button type="button" (click)="myCarId(car.CarId,car.LatePay,car.PriceForDay)"  class="btn btn-success">
+   <i class="fas fa-shopping-cart"></i>
+</button>
+</div>
+
+
+
+<!--TEMP SHOWING IMAGE AFTER I FINISH UPLOADING SAVING INTO ANGULAR ASSESTS FOLDER AND NOT WEB API-->
+<div class="col-4" *ngIf="cars.Model=='Picanto'">
+      <img src="{{imageKia}}"  class="card-img-top" alt="...">
+</div>
+
+<div class="col-4" *ngIf="cars.Model=='CHR'">
+    <img src="{{imageToyota}}"  class="card-img-top" alt="...">
+</div>
+
+<div class="col-4" *ngIf="cars.Model=='207'">
+    <img src="{{imagePeuogeot}}"  class="card-img-top" alt="...">
+</div>
+
+<div class="col-4" *ngIf="cars.Model=='Clio'">
+    <img src="{{imageRenault}}"  class="card-img-top" alt="...">
+</div>
+
+<div class="col-4" *ngIf="cars.Model=='Fusion'">
+    <img src="{{imageFord}}"  class="card-img-top" alt="...">
+</div>
+
+<!-- END OF IMAGES-->
+
+
+
+</div>
+</div>
+</tr>
+
+</div>
+</div>
+</form>
+<div class="row" id="paginator">
+  <div>
+      <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </div>
+ 
+
+ </div>
+</div>
+   
+
+   <div class="col-3">
+      <h5>Choose a car</h5>
+
+       <div class="input-group mb-3"  >
+         <div class="input-group-prepend">
+           <span class="input-group-text" id="inputGroup-sizing-default">Type</span>
+         </div>
+         <select #type class="custom-select" (change)="TypeFilter(type.value)" >
+           <option label="All cars"></option>
+          <option  *ngFor="let myCars of service.listInfoCar;let i = index"   ><li> {{myCars.Type}}</li></option>
+        </select>
+       </div>
+
+
+       <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Model</span>
+          </div>
+          <select class="custom-select" [(ngModel)]="searchModel"  id="inputGroupSelect01">
+            <option label="All"></option>
+           <option *ngFor="let myCar of newCarType;let i = index"><li *ngIf="i < 3">{{myCar.Model}}</li></option>
+         </select>
+        </div>
+
+       <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Year</label>
+          </div>
+          <select  class="custom-select" [(ngModel)]="searchYear"  id="inputGroupSelect01">
+            <option label="All" ></option>
+            <option *ngFor="let myCar of newCarType">{{myCar.YearMade}}</option>
+          </select>
+        </div>
+
+
+       <div class="input-group mb-3">
+         <div class="input-group-prepend">
+           <span class="input-group-text" id="inputGroup-sizing-default">Gear</span>
+         </div>
+         <select class="custom-select" [(ngModel)]="searchGear"  id="inputGroupSelect01">
+           <option label="All" ></option>
+          <option *ngFor="let myCar of newCarType ">{{myCar.Gear}}</option>
+        </select>
+       </div>
+
+
+       <div class="input-group mb-3">
+         <div class="input-group-prepend">
+           <span class="input-group-text" id="inputGroup-sizing-default">Start date</span>
+         </div>
+         <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+       </div>
+
+
+       <div class="input-group mb-3">
+         <div class="input-group-prepend">
+           <span class="input-group-text" id="inputGroup-sizing-default">Return date</span>
+         </div>
+         <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+       </div>
+
+   </div>
+ </div>
+</div>

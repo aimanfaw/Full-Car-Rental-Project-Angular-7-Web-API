@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarStoreDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CarInfo">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="YearMade" Type="int" Nullable="false" />
+    <Property Name="Gear" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarLocation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarType">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Available" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PriceForDay" Type="int" Nullable="false" />
+    <Property Name="LatePay" Type="int" Nullable="false" />
+    <Property Name="Picture" Type="varchar(max)" Nullable="false" />
+    <Property Name="Location" Type="int" Nullable="false" />
+    <Property Name="CarInfoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegisterUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RentTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CarInfoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CarType_CarInfo">
+    <End Role="CarInfo" Type="Self.CarInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CarType" Type="Self.CarType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarInfo">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="CarType">
+        <PropertyRef Name="CarInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarType_CarLocation">
+    <End Role="CarLocation" Type="Self.CarLocation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CarType" Type="Self.CarType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarLocation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CarType">
+        <PropertyRef Name="Location" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegisterUser_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RegisterUser" Type="Self.RegisterUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RegisterUser">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RentTable_CarInfo">
+    <End Role="CarInfo" Type="Self.CarInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RentTable" Type="Self.RentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarInfo">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="RentTable">
+        <PropertyRef Name="CarInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RentTable_RegisterUser">
+    <End Role="RegisterUser" Type="Self.RegisterUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RentTable" Type="Self.RentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegisterUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RentTable">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarStoreDataModelStoreContainer">
+    <EntitySet Name="CarInfo" EntityType="Self.CarInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CarLocation" EntityType="Self.CarLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CarType" EntityType="Self.CarType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegisterUser" EntityType="Self.RegisterUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RentTable" EntityType="Self.RentTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CarType_CarInfo" Association="Self.FK_CarType_CarInfo">
+      <End Role="CarInfo" EntitySet="CarInfo" />
+      <End Role="CarType" EntitySet="CarType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarType_CarLocation" Association="Self.FK_CarType_CarLocation">
+      <End Role="CarLocation" EntitySet="CarLocation" />
+      <End Role="CarType" EntitySet="CarType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegisterUser_Roles" Association="Self.FK_RegisterUser_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="RegisterUser" EntitySet="RegisterUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RentTable_CarInfo" Association="Self.FK_RentTable_CarInfo">
+      <End Role="CarInfo" EntitySet="CarInfo" />
+      <End Role="RentTable" EntitySet="RentTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RentTable_RegisterUser" Association="Self.FK_RentTable_RegisterUser">
+      <End Role="RegisterUser" EntitySet="RegisterUser" />
+      <End Role="RentTable" EntitySet="RentTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

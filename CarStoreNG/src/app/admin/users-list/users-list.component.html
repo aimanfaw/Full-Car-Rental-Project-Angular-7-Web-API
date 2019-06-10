@@ -1,0 +1,88 @@
+<!--################CAR INFO ###################-->
+<h1 class="tittle">Edit / Delete Users</h1>
+<div class="container">
+    <div class="form-group" id="mySearch">
+        <input [(ngModel)]="searchUser" class="form-control" id="inputdefault" type="text" autocomplete="off" placeholder="  Search by Username / Fullname / Email / Id ..."> 
+      </div>
+<table  class="table" style="width:50rem">
+  <thead class="thead-dark">
+    <tr>
+        <th scope="col">Full name/Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">ID / Card ID</th>
+        <th scope="col">Role</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let user of service.usersList |paginate:{itemsPerPage:5, currentPage:p }|filter:searchUser">
+          <td >[{{user.FullName}}]-{{user.UserName}}</td>
+          <td  >{{user.Email}}</td>
+          <td  >[{{user.Id}}]{{user.PersonId}}</td>
+          <td >{{user.RoleId}}</td>
+      <th scope="row" (click)="editUser(user)"> <button class="btn btn-dark"><i class="fas fa-edit"></i></button></th>
+      <td><button (click)="userDelete(user.Id)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+    </tr>
+   
+  </tbody>
+</table>
+</div>
+<div class="row">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
+
+
+        <form #form="ngForm" style="height:500px;" (submit)="onSubmit(form)" autocomplete="off">
+            <div class="col-md">
+                <div class="card text-center">
+                  <div class="card-header">
+                    <h1 style="color:#31251a">Edit Users</h1>
+                  </div>
+          <input type="hidden" name="Id" #Id="ngModel" [(ngModel)]="service.registerData.Id">
+          <div class="form-group ">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <input name="FullName" #FullName="ngModel" [(ngModel)]="service.registerData.FullName" class="form-control" required>                        
+          </div>
+
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <label><i class="fas fa-user"></i> User Name</label>
+              <input name="UserName" #UserName="ngModel" [(ngModel)]="service.registerData.UserName" class="form-control" required>
+            
+          </div>
+          <div class="form-group col-md-6">
+              <label><i class="fas fa-key"></i> Password</label>
+              <input type="password" name="Password" #Password="ngModel" [(ngModel)]="service.registerData.Password" class="form-control" required>
+              
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-at"></i> Email</label>
+        <input type="email" name="Email" #Email="ngModel" [(ngModel)]="service.registerData.Email" class="form-control" required>
+       
+    </div>
+
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <label><i class="fas fa-id-card"></i> ID Number</label>
+              <input name="PersonId" #PersonId="ngModel" [(ngModel)]="service.registerData.PersonId" class="form-control" required>
+          </div>
+          <div class="form-group col-md-6">
+              <label><i class="fas fa-transgender"></i> Gender</label>
+              <input name="Gender" #Gender="ngModel" [(ngModel)]="service.registerData.Gender" class="form-control">
+          </div>
+   </div>
+<div class="form-group">
+  <label><i class="fas fa-user"></i> Role</label>
+  <input name="RoleId" #RoleId="ngModel" [(ngModel)]="service.registerData.RoleId" class="form-control" required>                        
+</div>
+
+
+<button type="submit" class="btn btn-primary" style="margin-bottom:15px;" [disabled]="form.invalid">Update</button>
+
+</div>
+    </div>
+  </form>

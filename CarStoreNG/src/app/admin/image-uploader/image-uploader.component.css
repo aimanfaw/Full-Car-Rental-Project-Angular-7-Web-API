@@ -1,0 +1,32 @@
+.control{
+    margin-top: 200px;
+}
+.card-header{
+    
+    text-align: center;
+    display: block
+}
+
+#buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+
+div.col-xs-1{
+    margin-left:-50px;
+    margin-top: 21px;
+    font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+form {
+    clear:both;
+    max-width:30%;
+    margin:0 auto;
+    display:block;
+font-family: 'Courier New', Courier, monospace;
+    text-align:center;  
+}
+

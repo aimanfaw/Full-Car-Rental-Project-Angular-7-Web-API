@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="height:60px;">
+    <div class="container">
+      
+      <a class="navbar-brand" routerLink="/home">
+        <i class="fa fa-home" ></i>&nbsp; &nbsp;&nbsp;
+      </a>
+      <a *ngIf="auth.isUserLoggedIn()" class="navbar-brand" routerLink="/purchase">
+        <i class="fas fa-shopping-cart"></i>&nbsp; &nbsp;
+      </a>
+      
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+   <li class="nav-item">
+      <a class="nav-link" routerLink="/rentcars"><i class="fas fa-car-side"></i></a> &nbsp;&nbsp;
+     
+   </li>
+   <li class="nav-item">
+      <a *ngIf="!auth.isUserLoggedIn()" id ="reglog" class="nav-link" routerLink="/login"><i class="fas fa-user-plus"> Sign up / </i> <i class="fas fa-sign-in-alt">  Login</i></a>
+      <a *ngIf="auth.isUserLoggedIn()" class="nav-link" routerLink="/login" (click)="Logout()"><i class="fas fa-sign-out-alt">Logout</i></a>
+    
+   </li>
+   <li class="nav-item">
+      <a id="Contact" class="nav-link" routerLink="/contact" >CONTACT</a>
+   </li>
+   <li *ngIf="auth.Worker()"  class="nav-item">
+      <div class="dropdown">
+       <a data-toggle="dropdown"><i class="fas fa-tools"></i>
+       </a>
+       <ul class="dropdown-menu">
+  <li><a routerLink="/users">&nbsp;edit users</a></li>
+  <li><a routerLink="/editcars">&nbsp;edit cars</a></li>
+  <li><a routerLink="/addtypecars">&nbsp;add cars</a></li>
+  <li><a routerLink="/rentedcars">&nbsp;rented Cars</a></li>
+       </ul>
+     </div></li>
+   
+        </ul>
+      </div>
+    </div>
+  </nav>
+       
+  <router-outlet></router-outlet>
+
+    
+      
+      

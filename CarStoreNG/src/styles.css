@@ -1,0 +1,15 @@
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+#toast-container > div {
+    opacity:1;
+}
+.mat-dialog-container {
+  background-color: gray;
+}
+body{
+    background-image: url(assets/carstorebg.jpeg);
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

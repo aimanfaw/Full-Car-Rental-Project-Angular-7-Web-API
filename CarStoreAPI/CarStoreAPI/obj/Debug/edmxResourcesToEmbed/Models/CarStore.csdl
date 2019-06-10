@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarStoreDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CarInfo">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="YearMade" Type="Int32" Nullable="false" />
+    <Property Name="Gear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CarTypes" Relationship="Self.FK_CarType_CarInfo" FromRole="CarInfo" ToRole="CarType" />
+    <NavigationProperty Name="RentTables" Relationship="Self.FK_RentTable_CarInfo" FromRole="CarInfo" ToRole="RentTable" />
+  </EntityType>
+  <EntityType Name="CarLocation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CarTypes" Relationship="Self.FK_CarType_CarLocation" FromRole="CarLocation" ToRole="CarType" />
+  </EntityType>
+  <EntityType Name="CarType">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Available" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PriceForDay" Type="Int32" Nullable="false" />
+    <Property Name="LatePay" Type="Int32" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Location" Type="Int32" Nullable="false" />
+    <Property Name="CarInfoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CarInfo" Relationship="Self.FK_CarType_CarInfo" FromRole="CarType" ToRole="CarInfo" />
+    <NavigationProperty Name="CarLocation" Relationship="Self.FK_CarType_CarLocation" FromRole="CarType" ToRole="CarLocation" />
+  </EntityType>
+  <EntityType Name="RegisterUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_RegisterUser_Roles" FromRole="RegisterUser" ToRole="Roles" />
+    <NavigationProperty Name="RentTables" Relationship="Self.FK_RentTable_RegisterUser" FromRole="RegisterUser" ToRole="RentTable" />
+  </EntityType>
+  <EntityType Name="RentTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CarInfoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CarInfo" Relationship="Self.FK_RentTable_CarInfo" FromRole="RentTable" ToRole="CarInfo" />
+    <NavigationProperty Name="RegisterUser" Relationship="Self.FK_RentTable_RegisterUser" FromRole="RentTable" ToRole="RegisterUser" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="RegisterUsers" Relationship="Self.FK_RegisterUser_Roles" FromRole="Roles" ToRole="RegisterUser" />
+  </EntityType>
+  <Association Name="FK_CarType_CarInfo">
+    <End Role="CarInfo" Type="Self.CarInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CarType" Type="Self.CarType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarInfo">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="CarType">
+        <PropertyRef Name="CarInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RentTable_CarInfo">
+    <End Role="CarInfo" Type="Self.CarInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RentTable" Type="Self.RentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarInfo">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="RentTable">
+        <PropertyRef Name="CarInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarType_CarLocation">
+    <End Role="CarLocation" Type="Self.CarLocation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CarType" Type="Self.CarType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarLocation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CarType">
+        <PropertyRef Name="Location" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegisterUser_Roles">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RegisterUser" Type="Self.RegisterUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RegisterUser">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RentTable_RegisterUser">
+    <End Role="RegisterUser" Type="Self.RegisterUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RentTable" Type="Self.RentTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegisterUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RentTable">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarStoreDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CarInfoes" EntityType="Self.CarInfo" />
+    <EntitySet Name="CarLocations" EntityType="Self.CarLocation" />
+    <EntitySet Name="CarTypes" EntityType="Self.CarType" />
+    <EntitySet Name="RegisterUsers" EntityType="Self.RegisterUser" />
+    <EntitySet Name="RentTables" EntityType="Self.RentTable" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <AssociationSet Name="FK_CarType_CarInfo" Association="Self.FK_CarType_CarInfo">
+      <End Role="CarInfo" EntitySet="CarInfoes" />
+      <End Role="CarType" EntitySet="CarTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RentTable_CarInfo" Association="Self.FK_RentTable_CarInfo">
+      <End Role="CarInfo" EntitySet="CarInfoes" />
+      <End Role="RentTable" EntitySet="RentTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarType_CarLocation" Association="Self.FK_CarType_CarLocation">
+      <End Role="CarLocation" EntitySet="CarLocations" />
+      <End Role="CarType" EntitySet="CarTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegisterUser_Roles" Association="Self.FK_RegisterUser_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="RegisterUser" EntitySet="RegisterUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RentTable_RegisterUser" Association="Self.FK_RentTable_RegisterUser">
+      <End Role="RegisterUser" EntitySet="RegisterUsers" />
+      <End Role="RentTable" EntitySet="RentTables" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

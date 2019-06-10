@@ -1,0 +1,48 @@
+
+.table{
+    align-items: center;
+    margin-left: 14%;
+    background-color: white;
+}
+
+#mySearch{
+    width: 50rem;
+    margin-left: 14%;
+}
+
+.tittle{
+  margin-top: 100px;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #31251a;
+    
+}
+
+
+
+form{
+max-width:30%;
+min-width: 50%;
+margin:0 auto;
+display:block;
+font-family:"Comic Sans MS", cursive, sans-serif;
+text-align:center;  
+}
+
+
+input.ng-touched.ng-invalid{
+
+border-color: #dc3545;
+}
+
+.card{
+    height: 547px;
+}
+label{
+ font-size: 15px;
+ color: #31251a
+}
+
+pagination-controls{
+    margin-left: 620px;
+}

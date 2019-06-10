@@ -1,0 +1,30 @@
+<div class="control"></div>
+<form #form="ngForm" ngNativeValidate (submit)="onSubmit(CarModel,Image)" autocomplete="off">
+    <div class="card text-center" style="width:25rem; height:32rem">
+        <div class="card-header" style="width:25rem; height:3rem">
+            <h2 class="display-6 text-center">Upload Car Image</h2>
+            </div>
+          <ul id="textcard" class="nav nav-tabs card-header-tabs">                             
+          </ul>
+          <form #imageForm="ngForm">
+    <div class="form-group row">
+        <div class="col-xs-1">
+          <label>Re-type car Type</label>
+            <input type="text" style="width:260px;" ngModel name="CarModel" #CarModel  class="form-control" required>
+          </div>
+      <div class="col-xs-1">
+          <img src="{{myImage}}" style="width:250px;height:250px; " >
+          <input type="file" style="width:260px;" (change)="onFile($event.target.files)" #ImageName accept="ImageName/*" class="form-control" required>
+        </div>
+</div>
+</form>
+
+<div class="row" id="buttons">
+<button  class="btn btn-primary" routerLink="/editcars">Return</button>
+<button  type="submit" [disabled]="ImageName.value == ''||!imageForm" class="btn btn-dark">Submit</button>
+<button routerLink="/addtypecars"  class="btn btn-dark">ADD CAR</button>
+    
+  </div>
+  </div>
+
+</form>

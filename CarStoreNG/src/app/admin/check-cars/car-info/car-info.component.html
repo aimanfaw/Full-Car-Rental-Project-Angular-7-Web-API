@@ -1,0 +1,23 @@
+<form #form="ngForm" (submit)="onSubmit(form)">
+<div class="card" style="width: 20rem;">
+    <div class="card-header">
+     Car Information
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><label>Car Id</label> <input name="CarId" #CarId="ngModel" [(ngModel)]="myCar.CarId" readonly></li>
+        <li class="list-group-item"><label>Type</label> <input name="Type" #Type="ngModel" [(ngModel)]="myCar.Type" autocomplete="off"></li>
+        <li class="list-group-item"><label>Model</label> <input name="Model" #Model="ngModel" [(ngModel)]="myCar.Model" autocomplete="off"></li>
+        <li class="list-group-item"><label>YearMade</label> <input name="YearMade" #YearMade="ngModel" [(ngModel)]="myCar.YearMade" autocomplete="off"></li>
+        <li class="list-group-item"><label>Gear</label> <input name="Gear" #Gear="ngModel" [(ngModel)]="myCar.Gear" autocomplete="off"></li>
+        
+      </ul>
+      <div class="row">
+        <div class="col" id="btn1">
+            <button href="#"  class="btn btn-danger" [mat-dialog-close]>Close</button>
+        </div>
+        <div class="col" id="btn2">
+            <button type="submit"  class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+  </div>
+</form>
