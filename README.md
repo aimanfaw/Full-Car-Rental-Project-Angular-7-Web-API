@@ -1,5 +1,5 @@
 <strong> this is my first Angular + WEB API Project. Also Repositioriy. </strong>                    
-<h6>It's a Full Car Rental Website using Angular 2+ and WEB API as backend </h6>             
+<h6>It's a Full Car Rental Website using Angular 2+ and WEB API as backend where you can rent a cars from different dates, and it will auto caculate the total price by days..also you can accses map location to the store and search for specific..and a lot more! </h6>             
 
 <strong>#Please before running this project remember! </strong>
 <h6>1)Install npm packages using 'npm install' command inside the angular project</h6>                
