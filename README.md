@@ -7,4 +7,5 @@
 
 
 
-<strong>use admin account with the password (123) so you can access the page where u can add / remove cars...etc </strong>
+<strong> When you run this project </strong>
+<h6>use admin account with the password (123) so you can access the page where u can add / remove cars...etc</h6>
