@@ -4,6 +4,7 @@
 <strong>Inside this project</strong>
 <h6>1)You will find different components where each component leads to a different page, some componenets need authorization to accses such as adding cars or checking rents list...etc You can accses this components by using admin account or super user, or by giving yourself accses by changing the role Id in database,</h6>
 <h6>2)I worked with open-source CSS framework directed at responsive such as Bootstrap and fontawesome to design templates</h6>
+<h6>2) I also used Angular materials inside the project.
 
 <strong>#Please before running this project remember! </strong>
 <h6>1)Install npm packages using 'npm install' command inside the angular project</h6>                
