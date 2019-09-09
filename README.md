@@ -12,7 +12,8 @@
 <h6>3)I used with MatDialog ( Angular Materials).</h6>
 <h6>4)I used webapi for backend, with Entity framework.
 
-<strong> Please before running this project remember! </strong><br>
+
+<strong> Before running this project Remeber </strong>
 <h6>1)Install npm packages using 'npm install' command inside the angular project</h6>                
 <h6>2)Change Web API DB Connection String inside web api project for the correct path. </h6>          
 
