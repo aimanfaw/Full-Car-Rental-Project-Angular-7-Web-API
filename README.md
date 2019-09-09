@@ -14,7 +14,7 @@
 <strong>Inside this project</strong><br>
 <h6>2)I worked with open-source CSS framework directed at responsive such as Bootstrap and fontawesome to design templates</h6>
 <h6>2) I also used Angular materials inside the project such as MatDialog....</h6>
-<h6>4)I used webapi for backend, with Entity framework and nugget packages to unable cors, and add token system for Authentication and Authorization
+<h6>4)I used webapi for backend, with Entity framework and nugget packages to unable cors, and token system for Authentication and Authorization
 
  
 
